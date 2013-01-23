@@ -1,0 +1,51 @@
+Changes in version 1.2
+
+  o gte() now returns 'intmap', the intervals of the potential steps in the conditional 
+    survival function, called innermost interval, in which the GTE is indeterminate. They are
+    computed with an internal function derived from function Aintmap() of the 'interval' package.
+
+  o gte() also returns 'surv.summary', the estimate of the conditional survival function only 
+    for the innermost intervals.
+
+  o A print and a plot method have been added for objects of class 'gte'.
+
+  o In gte(), the initial death probability are now null for intervals not among the
+    innermost intervals.
+
+  o The values in the gte() output vector 'time', have been shifted down one position to be 
+    correctly associated with the survival values in the output matrix 'surv'.
+
+  o Documentation update and improvement.
+
+  o Tests in inst/tests/ have been updated and more tests have been added.
+
+
+Changes in version 1.1
+
+  o Multivariate Kernel weights have been corrected.
+
+  o gte() now works with a constant covariate.
+
+  o 'itermax' default value has been changed.
+
+  o Left censored observations can now be inputted by a left endpoints of the censoring interval 
+    taking the value NA or 0 (no more 0.0000001). Right censored observations can now be inputted 
+    by a right endpoints of the censoring interval taking the value NA or Inf (no more 10000). 
+    Events at exact time can now be inputted by equal left and right endpoints of the censoring 
+    interval (a very small difference between L and R is no more needed in the input, but the C
+    code still need it to work correctly).
+
+  o In the data set simul, 0.0000001 values for L and  10000 values for R have have been replaced 
+    by NA and for events at exact time L and R are now equals. Also, the data set documentation
+    has been updated and improved.
+
+  o The package examples have been extended.
+
+  o The columns of the output value surv have been renamed.
+
+  o Tests made with testthat have been added in inst/tests (see inst/tests/READMEtest.R).
+
+
+gte 1.0
+
+  o First development version of the package

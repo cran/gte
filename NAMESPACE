@@ -1,0 +1,5 @@
+export(gte)
+importFrom(survival,Surv)
+S3method(plot,gte)
+S3method(print,gte)
+useDynLib(gte)

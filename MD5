@@ -1,0 +1,14 @@
+9d821c7cee39d79a5342c7a65f7f48ab *DESCRIPTION
+b45fa9d9d9cc4a4008975cc7df19ed2b *NAMESPACE
+01b80cf4193792e25e80c5ea6cb921b9 *NEWS
+6f4b29077db091135e4801bff5f4ff9a *R/gte-package.R
+62ed836b8af0acf9605b4460521a14d4 *R/gte.R
+fdae7ca310e10dc4815246511f866a57 *R/internal.R
+a8fdf04e4f92afa606a91c5a48a07354 *data/simul.rda
+379732f938d9901ac0ae88ddf25c5092 *inst/tests/READMEtest.R
+923128d5c475177383d8497a36094747 *inst/tests/testInput.R
+d98911ca5a375ada0f70d28562f870c4 *inst/tests/testOutput.R
+8ba29842d6110970a15e61c326fb51b1 *man/gte-package.Rd
+0c92c4c050e62779b381c8bef8e321e6 *man/gte.Rd
+82042238d3b3f80c65ae5a227ba90c68 *man/simul.Rd
+40ab12e775fd8650840c2ac5652fa37b *src/Ccode.c
