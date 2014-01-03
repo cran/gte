@@ -1,3 +1,8 @@
+Changes in version 1.2-1
+
+  o Tests in inst/tests/ have been removed.
+
+
 Changes in version 1.2
 
   o gte() now returns 'intmap', the intervals of the potential steps in the conditional 
