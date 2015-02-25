@@ -1,3 +1,8 @@
+Changes in version 1.2-2
+
+  o Bug fix : gte() now deals properly with datasets containing no interval censored observations.
+
+
 Changes in version 1.2-1
 
   o Tests in inst/tests/ have been removed.

@@ -7,8 +7,8 @@
 #' \tabular{ll}{ 
 #' Package: \tab gte\cr 
 #' Type: \tab Package\cr 
-#' Version: \tab 1.2-1\cr 
-#' Date: \tab 2014-01-03\cr 
+#' Version: \tab 1.2-2\cr 
+#' Date: \tab 2015-02-25\cr 
 #' License: \tab GPL-2\cr 
 #' }
 #' 

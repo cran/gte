@@ -1,6 +1,6 @@
 #' Generalized Turnbull's Estimator
 #' 
-#' The \code{gte} function computes the generalized Turnbull's estimator (GTE) proposed by Dehghan and Duchesne (2011).
+#' The \code{gte} function computes the generalized Turnbull's Estimator (GTE) proposed by Dehghan and Duchesne (2011).
 #' It is a nonparametric estimator of a conditional survival function given a vector of continuous covariates 
 #' that can handle interval-censored lifetimes.\cr
 #' The \code{print} method for objects obtained from \code{gte} only prints the output value \code{surv.summary}.\cr
@@ -74,7 +74,7 @@
 #' \emph{Lifetime Data Analysis}, \bold{17}, 234-255.
 #' @useDynLib gte
 #' @export
-#' @importFrom survival Surv
+#' @importFrom survival is.Surv Surv
 #' @examples
 #' data(simul)
 #' 
@@ -143,11 +143,11 @@ gte <- function(formula, data, z, h=NULL, itermax=100000, tole=0.0005){
     stop(paste("Surv obj type='", type, "' unrecognized", 
                sep = ""))
   }
-# Remarque : j'ai réussi à complètement remplacer les 0.0000001 par des 0 pour la censure à gauche
-# et les 10000 pour des Inf pour la censure à droite. Par contre, pour les événement à un temps exact,
-# on peut fournir en entrée L=R, mais dans le code on doit prendre R = L + 0.0000001, sinon les calculs
-# ne sont pas bons. Mais j'enlève les lignes se référant aux R = L + 0.0000001 dans les sorties. 
-  L <- pmax(L, 0)  ## Pour ramener à zéro les temps négatifs
+# Remarque : j'ai reussi a completement remplacer les 0.0000001 par des 0 pour la censure a gauche
+# et les 10000 pour des Inf pour la censure a droite. Par contre, pour les evenement a un temps exact,
+# on peut fournir en entree L=R, mais dans le code on doit prendre R = L + 0.0000001, sinon les calculs
+# ne sont pas bons. Mais j'enleve les lignes se referant aux R = L + 0.0000001 dans les sorties. 
+  L <- pmax(L, 0)  ## Pour ramener a zero les temps negatifs
   R <- pmax(R, 0)
   N <- length(L)
               
@@ -254,13 +254,9 @@ gte <- function(formula, data, z, h=NULL, itermax=100000, tole=0.0005){
   time <- LR1[-1] ## this associate each survival rate to the upper bound of the corresponding interval
   time <- ifelse(time == SupLR, Inf, time)
   
-  # Add time 0
-  time <- c(0, time)
-  S <- rbind(rep(1, ncol(S)), S)
-  
-  # S'il y avait des L=R (événement à un temps exact) en entrée
+  # S'il y avait des L=R (evenement a un temps exact) en entree
   id_exact <- if(type=="interval") mf$Surv[,3]==1 else mf$Surv[,2]==1
-  if (length(id_exact)>0){
+  if (sum(id_exact)>0){
     # Pour enlever les lignes des temps L et changer les temps
     # R pour leur valeur exact 
     toremove <- time %in% L[id_exact]
@@ -274,6 +270,10 @@ gte <- function(formula, data, z, h=NULL, itermax=100000, tole=0.0005){
     intmap[2, ev] <- intmap[1, ev]
     attr(intmap, which = "LRin")[1, ev] <- TRUE
   }
+
+  # Add time 0
+  time <- c(0, time)
+  S <- rbind(rep(1, ncol(S)), S)
 
   # Correction in intmap for Inf which has been replaced by max(LR1) + 1.
   if(intmap[2, ncol(intmap)] == SupLR){
@@ -339,19 +339,21 @@ plot.gte <- function(x, overlay = TRUE, shade = TRUE, xlab = "time", ylab = "sur
   # Add shade for rectangles of innermost intervals
   if(shade){
     interval <- x$intmap[, x$intmap[1,] != x$intmap[2,], drop=FALSE]
-    seqcol <- if (ncol(S) == 1) 0.8 else
-              if (ncol(S) == 2) c(0.7, 0.8) else
-              if (ncol(S) == 3) c(0.6, 0.7, 0.8) else 
-              if (ncol(S) == 4) c(0.6, 0.7, 0.8, 0.9) else
-                                seq(0.6, 0.9, length=ncol(S))
-    for (j in 1:ncol(S)){
-      for (i in 1:ncol(interval)){
-        xInf <- interval[1, i]
-        xSup <- interval[2, i] 
-        yInf <- min(S[time==xSup, j])
-        ySup <- max(S[time==xInf, j])
-        if(!is.finite(xSup)) xSup <- op$usr[2] 
-        polygon(x = c(xInf, xInf, xSup, xSup), y = c(yInf, ySup, ySup, yInf), col = gray(seqcol[j]),  border = NA)
+    if(ncol(interval)>0){
+      seqcol <- if (ncol(S) == 1) 0.8 else
+                if (ncol(S) == 2) c(0.7, 0.8) else
+                if (ncol(S) == 3) c(0.6, 0.7, 0.8) else 
+                if (ncol(S) == 4) c(0.6, 0.7, 0.8, 0.9) else
+                                  seq(0.6, 0.9, length=ncol(S))
+      for (j in 1:ncol(S)){
+        for (i in 1:ncol(interval)){
+          xInf <- interval[1, i]
+          xSup <- interval[2, i] 
+          yInf <- min(S[time==xSup, j])
+          ySup <- max(S[time==xInf, j])
+          if(!is.finite(xSup)) xSup <- op$usr[2] 
+          polygon(x = c(xInf, xInf, xSup, xSup), y = c(yInf, ySup, ySup, yInf), col = gray(seqcol[j]),  border = NA)
+        }
       }
     }
   }
