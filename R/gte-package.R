@@ -7,8 +7,8 @@
 #' \tabular{ll}{ 
 #' Package: \tab gte\cr 
 #' Type: \tab Package\cr 
-#' Version: \tab 1.2-2\cr 
-#' Date: \tab 2015-02-25\cr 
+#' Version: \tab 1.2-3\cr 
+#' Date: \tab 2022-04-13\cr 
 #' License: \tab GPL-2\cr 
 #' }
 #' 
@@ -46,7 +46,6 @@ NULL
 #' \emph{Lifetime Data Analysis}, \bold{17}, 234-255.
 #' @keywords datasets
 #' @examples
-#' data(simul)
 #' Fit <- gte(Surv(L, R, type="interval2") ~ Z, data=simul, z=15)
 #' plot(Fit)
 NULL

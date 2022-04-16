@@ -1,3 +1,8 @@
+Changes in version 1.2-3
+
+  o R CMD check notes fixed.
+
+
 Changes in version 1.2-2
 
   o Bug fix : gte() now deals properly with datasets containing no interval censored observations.

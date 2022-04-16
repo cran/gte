@@ -72,12 +72,11 @@
 #' @references Dehghan, M. H. and Duchesne, T. (2011). A generalization of Turnbull's estimator for 
 #' nonparametric estimation of the conditional survival function with interval-censored data.
 #' \emph{Lifetime Data Analysis}, \bold{17}, 234-255.
-#' @useDynLib gte
+#' @useDynLib gte, .registration = TRUE
 #' @export
 #' @importFrom survival is.Surv Surv
+#' @importFrom stats dnorm model.extract model.matrix sd
 #' @examples
-#' data(simul)
-#' 
 #' ## Calling Surv() with type="interval2"
 #' Fit <- gte(Surv(L, R, type="interval2") ~ Z, data=simul, z=c(10, 20))
 #' Fit
@@ -319,6 +318,8 @@ print.gte <- function(x, ...) {
 #' @param yleg y location for legend, NULL by default (see \code{\link{legend}}).
 #' @param \dots Further arguments to be passed to \code{print.default} or \code{plot.default}. 
 #' @export
+#' @importFrom grDevices gray
+#' @importFrom graphics legend lines par polygon
 plot.gte <- function(x, overlay = TRUE, shade = TRUE, xlab = "time", ylab = "survival", 
                      xleg="bottomleft", yleg=NULL, ...) {
   
