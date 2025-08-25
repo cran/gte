@@ -7,14 +7,13 @@
 #' \tabular{ll}{ 
 #' Package: \tab gte\cr 
 #' Type: \tab Package\cr 
-#' Version: \tab 1.2-3\cr 
-#' Date: \tab 2022-04-13\cr 
+#' Version: \tab 1.2-4\cr 
+#' Date: \tab 2025-08-25\cr 
 #' License: \tab GPL-2\cr 
 #' }
 #' 
 #' @name gte-package
 #' @aliases gte-package
-#' @docType package
 #' @author Mohammad Hossein Dehghan, Thierry Duchesne and Sophie Baillargeon
 #' 
 #' Maintainer: Thierry Duchesne <thierry.duchesne@@mat.ulaval.ca>
@@ -22,7 +21,7 @@
 #' nonparametric estimation of the conditional survival function with interval-censored data.
 #' \emph{Lifetime Data Analysis}, \bold{17}, 234-255.
 #' @keywords package
-NULL
+"_PACKAGE"
 
 #' Simulated Data
 #' 
@@ -33,8 +32,6 @@ NULL
 #' An observation with \code{R = L} means that the time of occurence of the event
 #' is known exactly (occurs 3 times).  
 #' 
-#' @name simul
-#' @docType data
 #' @format A data frame with 100 observations on the following 3 variables.
 #' \describe{ 
 #'   \item{L}{the left endpoints of the censoring interval}
@@ -48,4 +45,4 @@ NULL
 #' @examples
 #' Fit <- gte(Surv(L, R, type="interval2") ~ Z, data=simul, z=15)
 #' plot(Fit)
-NULL
+"simul"

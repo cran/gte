@@ -12,6 +12,9 @@ A data frame with 100 observations on the following 3 variables.
   \item{Z}{a continuous covariate} 
 }
 }
+\usage{
+simul
+}
 \description{
 Simulated Interval-censored data
 }

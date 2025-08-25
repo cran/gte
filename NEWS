@@ -1,3 +1,10 @@
+Changes in version 1.2-4
+
+  o Bug fix: Package anchors were added for Rd \link{} targets not in the package. 
+
+  o Description file and documentation minor improvements.
+
+
 Changes in version 1.2-3
 
   o R CMD check notes fixed.

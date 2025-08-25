@@ -92,12 +92,12 @@ function, by default overlaying curves if more than one estimate is present and 
 in which the GTE is indeterminate.
 }
 \details{
-For interval-censored data, the \code{\link{Surv}} function should be called with the argument 
+For interval-censored data, the \code{\link[survival]{Surv}} function should be called with the argument 
 \code{type="interval"} or \code{type="interval2"}. If \code{type="interval"}, the \code{event} argument
 is mandatory. Therefore, in addition to the left and right endpoints of the censoring interval (called, respectively,
-\code{left} and {right} for illustrative purpose), one would need a third variable (\code{status}) taking the value 0 
+\code{left} and \code{right} for illustrative purpose), one would need a third variable (\code{status}) taking the value 0 
 for right censored data, 1 for an event at exact time, 2 for left censored data and 3 for interval censored data. 
-The \code{\link{Surv}} function would be called as follows:\cr
+The \code{\link[survival]{Surv}} function would be called as follows:\cr
 \code{Surv(time=left, time2=right, event=status, type="interval")}.
 
 If \code{type="interval2"}, the \code{event} argument cannot be given. 
@@ -106,9 +106,9 @@ if \code{time} takes the value \code{NA}, \code{event=2} (left censored data);\c
 if \code{time2} takes the value \code{NA}, \code{event=0} (right censored data);\cr
 if \code{time=time2}, \code{event=1} (exact time);\cr 
 otherwise, \code{event=3} (interval censored data).\cr
-See the help page of the \code{\link{Surv}} function for more details.\cr
+See the help page of the \code{\link[survival]{Surv}} function for more details.\cr
  
-In the \code{gte} function, the data must be given through the \code{\link{Surv}} function
+In the \code{gte} function, the data must be given through the \code{\link[survival]{Surv}} function
 but it is internally transformed in two vectors : \code{L} and \code{R} for the left and right endpoints of 
 the censoring interval, respectively.\cr     
 If \code{event=0} (right censored data), then \code{L=time} and \code{R=Inf};\cr     
@@ -116,7 +116,7 @@ if \code{event=1} (exact time), then \code{L=time} and \code{R=time};\cr
 if \code{event=2} (left censored data), then \code{L=0} and \code{R=time};\cr     
 and if \code{event=3} (interval censored data), then \code{L=time} and \code{R=time2};\cr
 If one has vectors \code{L} and \code{R} respecting this convention, they can be given directly to \code{gte}
-by calling \code{\link{Surv}} as follows:\cr
+by calling \code{\link[survival]{Surv}} as follows:\cr
 \code{Surv(L, R, type="interval2")}.
 }
 \examples{
@@ -149,7 +149,7 @@ nonparametric estimation of the conditional survival function with interval-cens
 \emph{Lifetime Data Analysis}, \bold{17}, 234-255.
 }
 \seealso{
-\code{\link{Surv}}
+\code{\link[survival]{Surv}}
 }
 \author{
 Mohammad Hossein Dehghan, Thierry Duchesne and Sophie Baillargeon

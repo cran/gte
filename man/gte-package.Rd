@@ -13,8 +13,8 @@ that can handle interval-censored lifetimes.
 \tabular{ll}{ 
 Package: \tab gte\cr 
 Type: \tab Package\cr 
-Version: \tab 1.2-3\cr 
-Date: \tab 2022-04-13\cr 
+Version: \tab 1.2-4\cr 
+Date: \tab 2025-08-25\cr 
 License: \tab GPL-2\cr 
 }
 }
